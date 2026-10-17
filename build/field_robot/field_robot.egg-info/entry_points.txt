@@ -1,0 +1,9 @@
+[console_scripts]
+control_node = field_robot.control_node:main
+fusion_node = field_robot.fusion_node:main
+map_node = field_robot.map_node:main
+motor_node = field_robot.motor_node:main
+mpu_node = field_robot.mpu_node:main
+spray_node = field_robot.spray_node:main
+trigger_node = field_robot.trigger_node:main
+web_ui_node = field_robot.web_ui_node:main

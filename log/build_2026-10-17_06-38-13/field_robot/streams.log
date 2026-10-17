@@ -1,0 +1,31 @@
+[0.841s] Invoking command in '/root/ros2_ws/src/field_robot': PYTHONPATH=/root/ros2_ws/build/field_robot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/field_robot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/field_robot build --build-base /root/ros2_ws/build/field_robot/build install --record /root/ros2_ws/build/field_robot/install.log --install-scripts $base/lib/field_robot --single-version-externally-managed install_data
+[1.036s] running egg_info
+[1.048s] writing ../../build/field_robot/field_robot.egg-info/PKG-INFO
+[1.048s] writing dependency_links to ../../build/field_robot/field_robot.egg-info/dependency_links.txt
+[1.049s] writing entry points to ../../build/field_robot/field_robot.egg-info/entry_points.txt
+[1.049s] writing requirements to ../../build/field_robot/field_robot.egg-info/requires.txt
+[1.049s] writing top-level names to ../../build/field_robot/field_robot.egg-info/top_level.txt
+[1.073s] reading manifest file '../../build/field_robot/field_robot.egg-info/SOURCES.txt'
+[1.073s] writing manifest file '../../build/field_robot/field_robot.egg-info/SOURCES.txt'
+[1.074s] running build
+[1.074s] running build_py
+[1.074s] copying field_robot/web_ui_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+[1.075s] running install
+[1.080s] running install_lib
+[1.092s] copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web_ui_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+[1.093s] byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web_ui_node.py to web_ui_node.cpython-312.pyc
+[1.095s] running install_data
+[1.095s] running install_egg_info
+[1.107s] removing '/root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot-0.1.0-py3.12.egg-info' (and everything under it)
+[1.108s] Copying ../../build/field_robot/field_robot.egg-info to /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot-0.1.0-py3.12.egg-info
+[1.109s] running install_scripts
+[1.199s] Installing control_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+[1.199s] Installing fusion_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+[1.199s] Installing map_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+[1.199s] Installing motor_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+[1.199s] Installing mpu_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+[1.200s] Installing spray_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+[1.200s] Installing trigger_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+[1.200s] Installing web_ui_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+[1.200s] writing list of installed files to '/root/ros2_ws/build/field_robot/install.log'
+[1.226s] Invoked command in '/root/ros2_ws/src/field_robot' returned '0': PYTHONPATH=/root/ros2_ws/build/field_robot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/field_robot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/field_robot build --build-base /root/ros2_ws/build/field_robot/build install --record /root/ros2_ws/build/field_robot/install.log --install-scripts $base/lib/field_robot --single-version-externally-managed install_data

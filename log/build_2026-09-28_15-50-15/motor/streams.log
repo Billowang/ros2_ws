@@ -1,0 +1,19 @@
+[1.231s] Invoking command in '/root/ros2_ws/src/motor': PYTHONPATH=/root/ros2_ws/build/motor/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/motor/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/motor build --build-base /root/ros2_ws/build/motor/build install --record /root/ros2_ws/build/motor/install.log --install-scripts $base/lib/motor --single-version-externally-managed install_data
+[1.431s] running egg_info
+[1.443s] writing ../../build/motor/motor.egg-info/PKG-INFO
+[1.443s] writing dependency_links to ../../build/motor/motor.egg-info/dependency_links.txt
+[1.444s] writing requirements to ../../build/motor/motor.egg-info/requires.txt
+[1.444s] writing top-level names to ../../build/motor/motor.egg-info/top_level.txt
+[1.469s] reading manifest file '../../build/motor/motor.egg-info/SOURCES.txt'
+[1.471s] writing manifest file '../../build/motor/motor.egg-info/SOURCES.txt'
+[1.471s] running build
+[1.471s] running build_py
+[1.471s] running install
+[1.476s] running install_lib
+[1.490s] running install_data
+[1.491s] running install_egg_info
+[1.504s] removing '/root/ros2_ws/install/motor/lib/python3.12/site-packages/motor-0.0.0-py3.12.egg-info' (and everything under it)
+[1.505s] Copying ../../build/motor/motor.egg-info to /root/ros2_ws/install/motor/lib/python3.12/site-packages/motor-0.0.0-py3.12.egg-info
+[1.507s] running install_scripts
+[1.596s] writing list of installed files to '/root/ros2_ws/build/motor/install.log'
+[1.646s] Invoked command in '/root/ros2_ws/src/motor' returned '0': PYTHONPATH=/root/ros2_ws/build/motor/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/motor/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/motor build --build-base /root/ros2_ws/build/motor/build install --record /root/ros2_ws/build/motor/install.log --install-scripts $base/lib/motor --single-version-externally-managed install_data

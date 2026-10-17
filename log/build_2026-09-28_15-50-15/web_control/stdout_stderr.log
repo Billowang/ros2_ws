@@ -1,0 +1,38 @@
+running egg_info
+creating ../../build/web_control/web_control.egg-info
+writing ../../build/web_control/web_control.egg-info/PKG-INFO
+writing dependency_links to ../../build/web_control/web_control.egg-info/dependency_links.txt
+writing entry points to ../../build/web_control/web_control.egg-info/entry_points.txt
+writing requirements to ../../build/web_control/web_control.egg-info/requires.txt
+writing top-level names to ../../build/web_control/web_control.egg-info/top_level.txt
+writing manifest file '../../build/web_control/web_control.egg-info/SOURCES.txt'
+reading manifest file '../../build/web_control/web_control.egg-info/SOURCES.txt'
+writing manifest file '../../build/web_control/web_control.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /root/ros2_ws/build/web_control/build
+creating /root/ros2_ws/build/web_control/build/lib
+creating /root/ros2_ws/build/web_control/build/lib/web_control
+copying web_control/__init__.py -> /root/ros2_ws/build/web_control/build/lib/web_control
+copying web_control/field_library.py -> /root/ros2_ws/build/web_control/build/lib/web_control
+copying web_control/server.py -> /root/ros2_ws/build/web_control/build/lib/web_control
+running install
+running install_lib
+creating /root/ros2_ws/install/web_control/lib/python3.12/site-packages/web_control
+copying /root/ros2_ws/build/web_control/build/lib/web_control/__init__.py -> /root/ros2_ws/install/web_control/lib/python3.12/site-packages/web_control
+copying /root/ros2_ws/build/web_control/build/lib/web_control/field_library.py -> /root/ros2_ws/install/web_control/lib/python3.12/site-packages/web_control
+copying /root/ros2_ws/build/web_control/build/lib/web_control/server.py -> /root/ros2_ws/install/web_control/lib/python3.12/site-packages/web_control
+byte-compiling /root/ros2_ws/install/web_control/lib/python3.12/site-packages/web_control/__init__.py to __init__.cpython-312.pyc
+byte-compiling /root/ros2_ws/install/web_control/lib/python3.12/site-packages/web_control/field_library.py to field_library.cpython-312.pyc
+byte-compiling /root/ros2_ws/install/web_control/lib/python3.12/site-packages/web_control/server.py to server.cpython-312.pyc
+running install_data
+creating /root/ros2_ws/install/web_control/share/ament_index
+creating /root/ros2_ws/install/web_control/share/ament_index/resource_index
+creating /root/ros2_ws/install/web_control/share/ament_index/resource_index/packages
+copying resource/web_control -> /root/ros2_ws/install/web_control/share/ament_index/resource_index/packages
+copying package.xml -> /root/ros2_ws/install/web_control/share/web_control
+running install_egg_info
+Copying ../../build/web_control/web_control.egg-info to /root/ros2_ws/install/web_control/lib/python3.12/site-packages/web_control-0.0.0-py3.12.egg-info
+running install_scripts
+Installing web_control_node script to /root/ros2_ws/install/web_control/lib/web_control
+writing list of installed files to '/root/ros2_ws/build/web_control/install.log'

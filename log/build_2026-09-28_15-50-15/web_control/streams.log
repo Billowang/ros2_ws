@@ -1,0 +1,40 @@
+[1.230s] Invoking command in '/root/ros2_ws/src/web_control': PYTHONPATH=/root/ros2_ws/build/web_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/web_control/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/web_control build --build-base /root/ros2_ws/build/web_control/build install --record /root/ros2_ws/build/web_control/install.log --install-scripts $base/lib/web_control --single-version-externally-managed install_data
+[1.422s] running egg_info
+[1.422s] creating ../../build/web_control/web_control.egg-info
+[1.433s] writing ../../build/web_control/web_control.egg-info/PKG-INFO
+[1.434s] writing dependency_links to ../../build/web_control/web_control.egg-info/dependency_links.txt
+[1.434s] writing entry points to ../../build/web_control/web_control.egg-info/entry_points.txt
+[1.434s] writing requirements to ../../build/web_control/web_control.egg-info/requires.txt
+[1.434s] writing top-level names to ../../build/web_control/web_control.egg-info/top_level.txt
+[1.434s] writing manifest file '../../build/web_control/web_control.egg-info/SOURCES.txt'
+[1.459s] reading manifest file '../../build/web_control/web_control.egg-info/SOURCES.txt'
+[1.459s] writing manifest file '../../build/web_control/web_control.egg-info/SOURCES.txt'
+[1.459s] running build
+[1.460s] running build_py
+[1.460s] creating /root/ros2_ws/build/web_control/build
+[1.460s] creating /root/ros2_ws/build/web_control/build/lib
+[1.461s] creating /root/ros2_ws/build/web_control/build/lib/web_control
+[1.461s] copying web_control/__init__.py -> /root/ros2_ws/build/web_control/build/lib/web_control
+[1.461s] copying web_control/field_library.py -> /root/ros2_ws/build/web_control/build/lib/web_control
+[1.461s] copying web_control/server.py -> /root/ros2_ws/build/web_control/build/lib/web_control
+[1.462s] running install
+[1.467s] running install_lib
+[1.479s] creating /root/ros2_ws/install/web_control/lib/python3.12/site-packages/web_control
+[1.480s] copying /root/ros2_ws/build/web_control/build/lib/web_control/__init__.py -> /root/ros2_ws/install/web_control/lib/python3.12/site-packages/web_control
+[1.480s] copying /root/ros2_ws/build/web_control/build/lib/web_control/field_library.py -> /root/ros2_ws/install/web_control/lib/python3.12/site-packages/web_control
+[1.480s] copying /root/ros2_ws/build/web_control/build/lib/web_control/server.py -> /root/ros2_ws/install/web_control/lib/python3.12/site-packages/web_control
+[1.481s] byte-compiling /root/ros2_ws/install/web_control/lib/python3.12/site-packages/web_control/__init__.py to __init__.cpython-312.pyc
+[1.481s] byte-compiling /root/ros2_ws/install/web_control/lib/python3.12/site-packages/web_control/field_library.py to field_library.cpython-312.pyc
+[1.482s] byte-compiling /root/ros2_ws/install/web_control/lib/python3.12/site-packages/web_control/server.py to server.cpython-312.pyc
+[1.484s] running install_data
+[1.485s] creating /root/ros2_ws/install/web_control/share/ament_index
+[1.486s] creating /root/ros2_ws/install/web_control/share/ament_index/resource_index
+[1.486s] creating /root/ros2_ws/install/web_control/share/ament_index/resource_index/packages
+[1.486s] copying resource/web_control -> /root/ros2_ws/install/web_control/share/ament_index/resource_index/packages
+[1.486s] copying package.xml -> /root/ros2_ws/install/web_control/share/web_control
+[1.486s] running install_egg_info
+[1.500s] Copying ../../build/web_control/web_control.egg-info to /root/ros2_ws/install/web_control/lib/python3.12/site-packages/web_control-0.0.0-py3.12.egg-info
+[1.501s] running install_scripts
+[1.590s] Installing web_control_node script to /root/ros2_ws/install/web_control/lib/web_control
+[1.591s] writing list of installed files to '/root/ros2_ws/build/web_control/install.log'
+[1.651s] Invoked command in '/root/ros2_ws/src/web_control' returned '0': PYTHONPATH=/root/ros2_ws/build/web_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/web_control/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/web_control build --build-base /root/ros2_ws/build/web_control/build install --record /root/ros2_ws/build/web_control/install.log --install-scripts $base/lib/web_control --single-version-externally-managed install_data

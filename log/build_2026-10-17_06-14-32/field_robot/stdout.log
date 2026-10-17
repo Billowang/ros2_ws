@@ -1,0 +1,80 @@
+running egg_info
+creating ../../build/field_robot/field_robot.egg-info
+writing ../../build/field_robot/field_robot.egg-info/PKG-INFO
+writing dependency_links to ../../build/field_robot/field_robot.egg-info/dependency_links.txt
+writing entry points to ../../build/field_robot/field_robot.egg-info/entry_points.txt
+writing requirements to ../../build/field_robot/field_robot.egg-info/requires.txt
+writing top-level names to ../../build/field_robot/field_robot.egg-info/top_level.txt
+writing manifest file '../../build/field_robot/field_robot.egg-info/SOURCES.txt'
+reading manifest file '../../build/field_robot/field_robot.egg-info/SOURCES.txt'
+writing manifest file '../../build/field_robot/field_robot.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /root/ros2_ws/build/field_robot/build
+creating /root/ros2_ws/build/field_robot/build/lib
+creating /root/ros2_ws/build/field_robot/build/lib/field_robot
+copying field_robot/__init__.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+copying field_robot/motor_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+copying field_robot/spray_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+copying field_robot/map_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+copying field_robot/web_ui_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+copying field_robot/trigger_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+copying field_robot/field_library.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+copying field_robot/fusion_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+copying field_robot/control_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+copying field_robot/mpu_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+creating /root/ros2_ws/build/field_robot/build/lib/field_robot/web
+copying field_robot/web/style.css -> /root/ros2_ws/build/field_robot/build/lib/field_robot/web
+copying field_robot/web/field-library.js -> /root/ros2_ws/build/field_robot/build/lib/field_robot/web
+copying field_robot/web/app.js -> /root/ros2_ws/build/field_robot/build/lib/field_robot/web
+copying field_robot/web/field_library.json -> /root/ros2_ws/build/field_robot/build/lib/field_robot/web
+copying field_robot/web/index.html -> /root/ros2_ws/build/field_robot/build/lib/field_robot/web
+running install
+running install_lib
+creating /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+copying /root/ros2_ws/build/field_robot/build/lib/field_robot/__init__.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+copying /root/ros2_ws/build/field_robot/build/lib/field_robot/motor_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+copying /root/ros2_ws/build/field_robot/build/lib/field_robot/spray_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+creating /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web
+copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web/style.css -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web
+copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web/field-library.js -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web
+copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web/app.js -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web
+copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web/field_library.json -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web
+copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web/index.html -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web
+copying /root/ros2_ws/build/field_robot/build/lib/field_robot/map_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web_ui_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+copying /root/ros2_ws/build/field_robot/build/lib/field_robot/trigger_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+copying /root/ros2_ws/build/field_robot/build/lib/field_robot/field_library.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+copying /root/ros2_ws/build/field_robot/build/lib/field_robot/fusion_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+copying /root/ros2_ws/build/field_robot/build/lib/field_robot/control_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+copying /root/ros2_ws/build/field_robot/build/lib/field_robot/mpu_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/__init__.py to __init__.cpython-312.pyc
+byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/motor_node.py to motor_node.cpython-312.pyc
+byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/spray_node.py to spray_node.cpython-312.pyc
+byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/map_node.py to map_node.cpython-312.pyc
+byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web_ui_node.py to web_ui_node.cpython-312.pyc
+byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/trigger_node.py to trigger_node.cpython-312.pyc
+byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/field_library.py to field_library.cpython-312.pyc
+byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/fusion_node.py to fusion_node.cpython-312.pyc
+byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/control_node.py to control_node.cpython-312.pyc
+byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/mpu_node.py to mpu_node.cpython-312.pyc
+running install_data
+creating /root/ros2_ws/install/field_robot/share/ament_index
+creating /root/ros2_ws/install/field_robot/share/ament_index/resource_index
+creating /root/ros2_ws/install/field_robot/share/ament_index/resource_index/packages
+copying resource/field_robot -> /root/ros2_ws/install/field_robot/share/ament_index/resource_index/packages
+copying package.xml -> /root/ros2_ws/install/field_robot/share/field_robot
+creating /root/ros2_ws/install/field_robot/share/field_robot/launch
+copying launch/robot.launch.py -> /root/ros2_ws/install/field_robot/share/field_robot/launch
+running install_egg_info
+Copying ../../build/field_robot/field_robot.egg-info to /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot-0.1.0-py3.12.egg-info
+running install_scripts
+Installing control_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+Installing fusion_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+Installing map_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+Installing motor_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+Installing mpu_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+Installing spray_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+Installing trigger_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+Installing web_ui_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+writing list of installed files to '/root/ros2_ws/build/field_robot/install.log'

@@ -1,0 +1,37 @@
+[0.987s] Invoking command in '/root/ros2_ws/src/control': PYTHONPATH=/root/ros2_ws/build/control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/control/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/control build --build-base /root/ros2_ws/build/control/build install --record /root/ros2_ws/build/control/install.log --install-scripts $base/lib/control --single-version-externally-managed install_data
+[1.194s] running egg_info
+[1.194s] creating ../../build/control/control.egg-info
+[1.206s] writing ../../build/control/control.egg-info/PKG-INFO
+[1.206s] writing dependency_links to ../../build/control/control.egg-info/dependency_links.txt
+[1.206s] writing entry points to ../../build/control/control.egg-info/entry_points.txt
+[1.207s] writing requirements to ../../build/control/control.egg-info/requires.txt
+[1.207s] writing top-level names to ../../build/control/control.egg-info/top_level.txt
+[1.207s] writing manifest file '../../build/control/control.egg-info/SOURCES.txt'
+[1.233s] reading manifest file '../../build/control/control.egg-info/SOURCES.txt'
+[1.233s] writing manifest file '../../build/control/control.egg-info/SOURCES.txt'
+[1.234s] running build
+[1.234s] running build_py
+[1.234s] creating /root/ros2_ws/build/control/build
+[1.235s] creating /root/ros2_ws/build/control/build/lib
+[1.235s] creating /root/ros2_ws/build/control/build/lib/control
+[1.235s] copying control/__init__.py -> /root/ros2_ws/build/control/build/lib/control
+[1.236s] copying control/control.py -> /root/ros2_ws/build/control/build/lib/control
+[1.236s] running install
+[1.241s] running install_lib
+[1.253s] creating /root/ros2_ws/install/control/lib/python3.12/site-packages/control
+[1.253s] copying /root/ros2_ws/build/control/build/lib/control/__init__.py -> /root/ros2_ws/install/control/lib/python3.12/site-packages/control
+[1.254s] copying /root/ros2_ws/build/control/build/lib/control/control.py -> /root/ros2_ws/install/control/lib/python3.12/site-packages/control
+[1.254s] byte-compiling /root/ros2_ws/install/control/lib/python3.12/site-packages/control/__init__.py to __init__.cpython-312.pyc
+[1.254s] byte-compiling /root/ros2_ws/install/control/lib/python3.12/site-packages/control/control.py to control.cpython-312.pyc
+[1.255s] running install_data
+[1.255s] creating /root/ros2_ws/install/control/share/ament_index
+[1.255s] creating /root/ros2_ws/install/control/share/ament_index/resource_index
+[1.256s] creating /root/ros2_ws/install/control/share/ament_index/resource_index/packages
+[1.256s] copying resource/control -> /root/ros2_ws/install/control/share/ament_index/resource_index/packages
+[1.256s] copying package.xml -> /root/ros2_ws/install/control/share/control
+[1.256s] running install_egg_info
+[1.269s] Copying ../../build/control/control.egg-info to /root/ros2_ws/install/control/lib/python3.12/site-packages/control-0.0.0-py3.12.egg-info
+[1.270s] running install_scripts
+[1.368s] Installing controller_node script to /root/ros2_ws/install/control/lib/control
+[1.369s] writing list of installed files to '/root/ros2_ws/build/control/install.log'
+[1.416s] Invoked command in '/root/ros2_ws/src/control' returned '0': PYTHONPATH=/root/ros2_ws/build/control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/control/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/control build --build-base /root/ros2_ws/build/control/build install --record /root/ros2_ws/build/control/install.log --install-scripts $base/lib/control --single-version-externally-managed install_data

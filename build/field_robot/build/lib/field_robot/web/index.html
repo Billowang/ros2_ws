@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>機器人控制面板</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left"><span class="clock" id="clock">--:--</span></div>
+  <div class="topbar-title" id="pageTitle">自動整備模式</div>
+  <div class="topbar-right">
+    <span class="dot" id="conn-dot"></span>
+    <span id="conn-label">連線中…</span>
+  </div>
+</div>
+
+<div class="app">
+  <button class="page-nav prev" id="prevPage" aria-label="上一頁">‹</button>
+
+  <div class="pages-viewport">
+    <div class="pages-track" id="pagesTrack">
+
+      <!-- ================= PAGE 1：自動整備（地圖型號 + 開始/停止） ================= -->
+      <section class="page page-mission">
+        <div class="mission-grid">
+
+          <div class="card missioncard">
+            <div class="card-title">任務設定</div>
+
+            <label class="field-label">球場規格</label>
+            <select class="field-select" id="fieldSpec"></select>
+
+            <label class="field-label">壘包間距</label>
+            <div class="field-input-row">
+              <input type="number" class="field-input" id="baseSpacing" value="27.43" step="0.01" min="5" max="50">
+              <span class="field-unit">m</span>
+            </div>
+
+            <label class="field-label">整備路徑</label>
+            <select class="field-select" id="pathSpec"></select>
+
+            <button class="primary-btn" id="startPrep">
+              <span class="play-icon" id="startIcon">▶</span> <span id="startLabel">開始整備</span>
+            </button>
+          </div>
+
+          <div class="card diamondcard">
+            <div class="diamond-legend">
+              <span class="legend-item"><span class="legend-swatch done"></span>已完成</span>
+              <span class="legend-item"><span class="legend-swatch active"></span>進行中</span>
+              <span class="legend-item"><span class="legend-swatch pending"></span>待執行</span>
+            </div>
+            <svg viewBox="0 0 360 320" class="diamond-svg" id="diamondSvg">
+              <g id="pathLayer"></g>
+              <g class="base" id="baseSecond"><rect x="-10" y="-10" width="20" height="20"/><text y="-20">二壘</text></g>
+              <g class="base" id="baseFirst"><rect x="-10" y="-10" width="20" height="20"/><text y="-20">一壘</text></g>
+              <g class="base" id="baseThird"><rect x="-10" y="-10" width="20" height="20"/><text y="-20">三壘</text></g>
+              <g class="base home" id="baseHome"><rect x="-10" y="-10" width="20" height="20"/><text y="24">本壘</text></g>
+            </svg>
+          </div>
+
+          <div class="card statuscard2">
+            <div class="card-title">系統狀態</div>
+            <div class="status-line"><span class="status-icon">📶</span><div><div class="status-name">通訊</div><div class="status-val2" id="connStatus">連線中</div></div></div>
+            <div class="status-line"><span class="status-icon">🧭</span><div><div class="status-name">模式</div><div class="status-val2" id="modeStatus">自動</div></div></div>
+            <div class="status-line"><span class="status-icon">🚩</span><div><div class="status-name">任務</div><div class="status-val2" id="missionStatus">待命</div></div></div>
+            <div class="status-line"><span class="status-icon">⚙️</span><div><div class="status-name">輪速指令 RPM</div><div class="status-val2" id="wheelRpm">L 0 &nbsp; R 0</div></div></div>
+          </div>
+        </div>
+
+        <div class="mission-footer" id="missionFooter">選擇球場規格與路徑後，按「開始整備」。</div>
+      </section>
+
+      <!-- ================= PAGE 2：手動控制（模式切換 + 左右輪轉速） ================= -->
+      <section class="page page-control">
+        <main class="panel">
+
+          <section class="card lockcard">
+            <button class="lock-btn" id="lockBtn" aria-pressed="false">
+              <span class="lock-icon" id="lockIcon">🔒</span>
+              <span class="lock-text" id="lockText">LOCK</span>
+              <span class="lock-sub" id="lockSub">安全鎖定</span>
+            </button>
+            <div class="lock-hint">長按 2 秒解鎖</div>
+            <button class="estop-btn" id="estopBtn">
+              <span class="estop-icon">⛔</span>
+              <span>急停<br>STOP</span>
+            </button>
+          </section>
+
+          <section class="motorgrid">
+            <div class="card motorcard">
+              <div class="motor-label">LEFT CMD</div>
+              <div class="motor-value"><span id="leftRpm">0</span><span class="unit">rpm</span></div>
+              <div class="motor-bar"><div class="motor-bar-fill" id="leftBar"></div></div>
+            </div>
+            <div class="card motorcard">
+              <div class="motor-label right">RIGHT CMD</div>
+              <div class="motor-value"><span id="rightRpm">0</span><span class="unit">rpm</span></div>
+              <div class="motor-bar"><div class="motor-bar-fill" id="rightBar"></div></div>
+            </div>
+
+            <div class="card controlcard">
+              <div class="control-title">前後控制</div>
+              <div class="vslider">
+                <button class="arrow up" id="throttleUp" aria-label="加速">▲</button>
+                <div class="vtrack" id="throttleTrack">
+                  <div class="vfill" id="throttleFill"></div>
+                  <div class="vhandle" id="throttleHandle"></div>
+                </div>
+                <button class="arrow down" id="throttleDown" aria-label="減速">▼</button>
+              </div>
+              <div class="control-readout">Throttle <span id="throttleVal">0</span>%</div>
+            </div>
+
+            <div class="card controlcard">
+              <div class="control-title">左右控制</div>
+              <div class="hslider">
+                <button class="arrow left" id="steerLeft" aria-label="左轉">◀</button>
+                <div class="htrack" id="steerTrack">
+                  <div class="hfill" id="steerFill"></div>
+                  <div class="hhandle" id="steerHandle"></div>
+                </div>
+                <button class="arrow right" id="steerRight" aria-label="右轉">▶</button>
+              </div>
+              <div class="control-readout">Steer <span id="steerVal">0</span>%</div>
+            </div>
+          </section>
+
+          <button class="cruise-btn" id="cruiseBtn" aria-pressed="false">
+            <span class="cruise-icon">⏱</span>
+            <span class="cruise-text">
+              <span class="cruise-title" id="cruiseTitle">CRUISE OFF</span>
+              <span class="cruise-sub">Hold Throttle</span>
+            </span>
+          </button>
+        </main>
+      </section>
+
+    </div>
+  </div>
+
+  <button class="page-nav next" id="nextPage" aria-label="下一頁">›</button>
+</div>
+
+<script src="field-library.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

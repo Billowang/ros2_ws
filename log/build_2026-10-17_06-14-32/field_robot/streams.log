@@ -1,0 +1,82 @@
+[0.866s] Invoking command in '/root/ros2_ws/src/web2': PYTHONPATH=/root/ros2_ws/build/field_robot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/field_robot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/field_robot build --build-base /root/ros2_ws/build/field_robot/build install --record /root/ros2_ws/build/field_robot/install.log --install-scripts $base/lib/field_robot --single-version-externally-managed install_data
+[1.068s] running egg_info
+[1.068s] creating ../../build/field_robot/field_robot.egg-info
+[1.080s] writing ../../build/field_robot/field_robot.egg-info/PKG-INFO
+[1.081s] writing dependency_links to ../../build/field_robot/field_robot.egg-info/dependency_links.txt
+[1.081s] writing entry points to ../../build/field_robot/field_robot.egg-info/entry_points.txt
+[1.081s] writing requirements to ../../build/field_robot/field_robot.egg-info/requires.txt
+[1.081s] writing top-level names to ../../build/field_robot/field_robot.egg-info/top_level.txt
+[1.081s] writing manifest file '../../build/field_robot/field_robot.egg-info/SOURCES.txt'
+[1.105s] reading manifest file '../../build/field_robot/field_robot.egg-info/SOURCES.txt'
+[1.105s] writing manifest file '../../build/field_robot/field_robot.egg-info/SOURCES.txt'
+[1.106s] running build
+[1.106s] running build_py
+[1.106s] creating /root/ros2_ws/build/field_robot/build
+[1.106s] creating /root/ros2_ws/build/field_robot/build/lib
+[1.106s] creating /root/ros2_ws/build/field_robot/build/lib/field_robot
+[1.107s] copying field_robot/__init__.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+[1.107s] copying field_robot/motor_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+[1.107s] copying field_robot/spray_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+[1.108s] copying field_robot/map_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+[1.108s] copying field_robot/web_ui_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+[1.108s] copying field_robot/trigger_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+[1.108s] copying field_robot/field_library.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+[1.108s] copying field_robot/fusion_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+[1.109s] copying field_robot/control_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+[1.109s] copying field_robot/mpu_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot
+[1.109s] creating /root/ros2_ws/build/field_robot/build/lib/field_robot/web
+[1.109s] copying field_robot/web/style.css -> /root/ros2_ws/build/field_robot/build/lib/field_robot/web
+[1.109s] copying field_robot/web/field-library.js -> /root/ros2_ws/build/field_robot/build/lib/field_robot/web
+[1.110s] copying field_robot/web/app.js -> /root/ros2_ws/build/field_robot/build/lib/field_robot/web
+[1.110s] copying field_robot/web/field_library.json -> /root/ros2_ws/build/field_robot/build/lib/field_robot/web
+[1.110s] copying field_robot/web/index.html -> /root/ros2_ws/build/field_robot/build/lib/field_robot/web
+[1.110s] running install
+[1.117s] running install_lib
+[1.130s] creating /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+[1.130s] copying /root/ros2_ws/build/field_robot/build/lib/field_robot/__init__.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+[1.130s] copying /root/ros2_ws/build/field_robot/build/lib/field_robot/motor_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+[1.131s] copying /root/ros2_ws/build/field_robot/build/lib/field_robot/spray_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+[1.131s] creating /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web
+[1.131s] copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web/style.css -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web
+[1.132s] copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web/field-library.js -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web
+[1.132s] copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web/app.js -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web
+[1.132s] copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web/field_library.json -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web
+[1.132s] copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web/index.html -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web
+[1.133s] copying /root/ros2_ws/build/field_robot/build/lib/field_robot/map_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+[1.133s] copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web_ui_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+[1.133s] copying /root/ros2_ws/build/field_robot/build/lib/field_robot/trigger_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+[1.133s] copying /root/ros2_ws/build/field_robot/build/lib/field_robot/field_library.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+[1.133s] copying /root/ros2_ws/build/field_robot/build/lib/field_robot/fusion_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+[1.133s] copying /root/ros2_ws/build/field_robot/build/lib/field_robot/control_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+[1.133s] copying /root/ros2_ws/build/field_robot/build/lib/field_robot/mpu_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot
+[1.134s] byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/__init__.py to __init__.cpython-312.pyc
+[1.134s] byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/motor_node.py to motor_node.cpython-312.pyc
+[1.135s] byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/spray_node.py to spray_node.cpython-312.pyc
+[1.136s] byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/map_node.py to map_node.cpython-312.pyc
+[1.137s] byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web_ui_node.py to web_ui_node.cpython-312.pyc
+[1.139s] byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/trigger_node.py to trigger_node.cpython-312.pyc
+[1.139s] byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/field_library.py to field_library.cpython-312.pyc
+[1.140s] byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/fusion_node.py to fusion_node.cpython-312.pyc
+[1.141s] byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/control_node.py to control_node.cpython-312.pyc
+[1.142s] byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/mpu_node.py to mpu_node.cpython-312.pyc
+[1.143s] running install_data
+[1.143s] creating /root/ros2_ws/install/field_robot/share/ament_index
+[1.143s] creating /root/ros2_ws/install/field_robot/share/ament_index/resource_index
+[1.143s] creating /root/ros2_ws/install/field_robot/share/ament_index/resource_index/packages
+[1.144s] copying resource/field_robot -> /root/ros2_ws/install/field_robot/share/ament_index/resource_index/packages
+[1.144s] copying package.xml -> /root/ros2_ws/install/field_robot/share/field_robot
+[1.144s] creating /root/ros2_ws/install/field_robot/share/field_robot/launch
+[1.144s] copying launch/robot.launch.py -> /root/ros2_ws/install/field_robot/share/field_robot/launch
+[1.144s] running install_egg_info
+[1.158s] Copying ../../build/field_robot/field_robot.egg-info to /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot-0.1.0-py3.12.egg-info
+[1.159s] running install_scripts
+[1.250s] Installing control_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+[1.251s] Installing fusion_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+[1.251s] Installing map_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+[1.251s] Installing motor_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+[1.251s] Installing mpu_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+[1.251s] Installing spray_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+[1.252s] Installing trigger_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+[1.252s] Installing web_ui_node script to /root/ros2_ws/install/field_robot/lib/field_robot
+[1.252s] writing list of installed files to '/root/ros2_ws/build/field_robot/install.log'
+[1.276s] Invoked command in '/root/ros2_ws/src/web2' returned '0': PYTHONPATH=/root/ros2_ws/build/field_robot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/field_robot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/field_robot build --build-base /root/ros2_ws/build/field_robot/build install --record /root/ros2_ws/build/field_robot/install.log --install-scripts $base/lib/field_robot --single-version-externally-managed install_data

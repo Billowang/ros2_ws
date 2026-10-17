@@ -1,0 +1,6 @@
+source;share/field_robot/hook/pythonpath.ps1
+source;share/field_robot/hook/pythonpath.dsv
+source;share/field_robot/hook/pythonpath.sh
+source;share/field_robot/hook/ament_prefix_path.ps1
+source;share/field_robot/hook/ament_prefix_path.dsv
+source;share/field_robot/hook/ament_prefix_path.sh

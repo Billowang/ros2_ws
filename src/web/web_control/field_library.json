@@ -1,0 +1,21 @@
+{
+  "_comment": "座標系統：原點(0,0)=本壘，X軸=本壘→一壘方向，Y軸=本壘→三壘方向，單位：公尺。二壘=(壘包間距,壘包間距)。base_spacing_m 數值僅為範例，請依實際場地規則調整。",
+
+  "presets": {
+    "成棒（國際規格）": { "base_spacing_m": 27.43 },
+    "青少棒":           { "base_spacing_m": 25.00 },
+    "少棒":             { "base_spacing_m": 18.29 },
+    "壘球":             { "base_spacing_m": 18.29 }
+  },
+
+  "path_templates": {
+    "perimeter_full": {
+      "label": "整備路徑（全場）",
+      "waypoints": ["home", "third", "second", "first", "home"]
+    },
+    "perimeter_half": {
+      "label": "整備路徑（半場）",
+      "waypoints": ["home", "third", "second"]
+    }
+  }
+}

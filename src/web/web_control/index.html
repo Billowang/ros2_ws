@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>機器人控制面板</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="clock" id="clock">--:--</span>
+    <span class="wifi-icon">📶</span>
+    <span class="rtk-badge" id="rtkBadge">● RTK FIX</span>
+  </div>
+  <div class="topbar-title" id="pageTitle">自動整備模式</div>
+  <div class="topbar-right">
+    <span class="dot" id="conn-dot"></span>
+    <span id="conn-label">連線中…</span>
+  </div>
+</div>
+
+<div class="app">
+
+  <button class="page-nav prev" id="prevPage" aria-label="上一頁">‹</button>
+
+  <div class="pages-viewport">
+    <div class="pages-track" id="pagesTrack">
+
+      <!-- ================= PAGE 1：任務設定 / 自動整備 ================= -->
+      <section class="page page-mission">
+        <div class="mission-grid">
+
+          <div class="card missioncard">
+            <div class="card-title">任務設定</div>
+
+            <label class="field-label">球場規格</label>
+            <select class="field-select" id="fieldSpec">
+              <option>成棒（國際規格）</option>
+              <option>青少棒</option>
+              <option>少棒</option>
+              <option>壘球</option>
+            </select>
+
+            <label class="field-label">壘包間距</label>
+            <div class="field-input-row">
+              <input type="number" class="field-input" id="baseSpacing" value="27.43" step="0.01">
+              <span class="field-unit">m</span>
+            </div>
+            <div class="field-hint">建議範圍：25.0 - 28.0 m</div>
+
+            <button class="primary-btn" id="startPrep">
+              <span class="play-icon">▶</span> 開始整備
+            </button>
+          </div>
+
+          <div class="card diamondcard">
+            <div class="diamond-legend">
+              <span class="legend-item"><span class="legend-swatch done"></span>已完成</span>
+              <span class="legend-item"><span class="legend-swatch active"></span>進行中</span>
+              <span class="legend-item"><span class="legend-swatch pending"></span>待執行</span>
+            </div>
+            <svg viewBox="0 0 360 320" class="diamond-svg" id="diamondSvg">
+              <!-- 路徑線段由 app.js 依 field-library.js 算出的座標動態產生，數量/狀態會隨路徑範本改變 -->
+              <g id="pathLayer"></g>
+
+              <g class="base" id="baseSecond">
+                <rect x="-10" y="-10" width="20" height="20"/>
+                <text y="-20">二壘</text>
+              </g>
+              <g class="base" id="baseFirst">
+                <rect x="-10" y="-10" width="20" height="20"/>
+                <text y="-20">一壘</text>
+              </g>
+              <g class="base" id="baseThird">
+                <rect x="-10" y="-10" width="20" height="20"/>
+                <text y="-20">三壘</text>
+              </g>
+              <g class="base home" id="baseHome">
+                <rect x="-10" y="-10" width="20" height="20"/>
+                <text y="24">本壘</text>
+              </g>
+              <circle class="robot-dot" id="robotDot" r="6"/>
+            </svg>
+          </div>
+
+          <div class="card statuscard2">
+            <div class="card-title">系統狀態</div>
+            <div class="status-line"><span class="status-icon">📍</span><div><div class="status-name">RTK 定位</div><div class="status-good" id="rtkStatus">RTK FIX</div></div><div class="status-extra" id="rtkAccuracy">± 2.1 cm</div></div>
+            <div class="status-line"><span class="status-icon">🧭</span><div><div class="status-name">IMU 狀態</div><div class="status-good" id="imuStatus">正常</div></div></div>
+            <div class="status-line"><span class="status-icon">🔋</span><div><div class="status-name">電量</div><div class="status-good" id="missionBatt">89%</div></div></div>
+            <div class="status-line"><span class="status-icon">🧴</span><div><div class="status-name">石灰粉剩餘</div><div class="status-good" id="limePowder">72%</div></div></div>
+            <div class="status-line"><span class="status-icon">⚙️</span><div><div class="status-name">左右輪速 RPM</div><div class="status-val2" id="wheelRpm">L 318 rpm &nbsp; R 320 rpm</div></div></div>
+            <div class="status-line"><span class="status-icon">🚶</span><div><div class="status-name">行進速度</div><div class="status-val2" id="travelSpeed">0.4 m/s</div></div></div>
+            <div class="status-line"><span class="status-icon">📶</span><div><div class="status-name">通訊狀態</div><div class="status-good" id="commStatus">良好</div></div></div>
+          </div>
+        </div>
+
+        <div class="mission-footer" id="missionFooter">下一步：即將抵達一壘，停止後自動放置一壘壘包。</div>
+      </section>
+
+      <!-- ================= PAGE 2：手動控制 ================= -->
+      <section class="page page-control">
+        <main class="panel">
+
+          <section class="card lockcard">
+            <button class="lock-btn" id="lockBtn" aria-pressed="false">
+              <span class="lock-icon" id="lockIcon">🔒</span>
+              <span class="lock-text" id="lockText">LOCK</span>
+              <span class="lock-sub" id="lockSub">安全鎖定</span>
+            </button>
+            <div class="lock-hint" id="lockHint">長按 2 秒解鎖</div>
+            <button class="estop-btn" id="estopBtn">
+              <span class="estop-icon">⛔</span>
+              <span>急停<br>STOP</span>
+            </button>
+          </section>
+
+          <section class="motorgrid">
+            <div class="card motorcard">
+              <div class="motor-label">LEFT MOTOR</div>
+              <div class="motor-value"><span id="leftRpm">0</span><span class="unit">rpm</span></div>
+              <div class="motor-bar"><div class="motor-bar-fill" id="leftBar"></div></div>
+            </div>
+            <div class="card motorcard">
+              <div class="motor-label right">RIGHT MOTOR</div>
+              <div class="motor-value"><span id="rightRpm">0</span><span class="unit">rpm</span></div>
+              <div class="motor-bar"><div class="motor-bar-fill" id="rightBar"></div></div>
+            </div>
+
+            <div class="card controlcard">
+              <div class="control-title">前後控制</div>
+              <div class="vslider" id="throttleSlider">
+                <button class="arrow up" id="throttleUp" aria-label="加速">▲</button>
+                <div class="vtrack" id="throttleTrack">
+                  <div class="vfill" id="throttleFill"></div>
+                  <div class="vhandle" id="throttleHandle"></div>
+                </div>
+                <button class="arrow down" id="throttleDown" aria-label="減速">▼</button>
+              </div>
+              <div class="control-readout">Throttle <span id="throttleVal">0</span>%</div>
+            </div>
+
+            <div class="card controlcard">
+              <div class="control-title">左右控制</div>
+              <div class="hslider" id="steerSlider">
+                <button class="arrow left" id="steerLeft" aria-label="左轉">◀</button>
+                <div class="htrack" id="steerTrack">
+                  <div class="hfill" id="steerFill"></div>
+                  <div class="hhandle" id="steerHandle"></div>
+                </div>
+                <button class="arrow right" id="steerRight" aria-label="右轉">▶</button>
+              </div>
+              <div class="control-readout">Steer <span id="steerVal">0</span>%</div>
+            </div>
+          </section>
+
+          <button class="cruise-btn" id="cruiseBtn" aria-pressed="false">
+            <span class="cruise-icon">⏱</span>
+            <span class="cruise-text">
+              <span class="cruise-title" id="cruiseTitle">CRUISE OFF</span>
+              <span class="cruise-sub">Maintain Speed</span>
+            </span>
+          </button>
+
+          <section class="card statuscard">
+            <div class="battery-ring">
+              <svg viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="52" class="ring-bg"/>
+                <circle cx="60" cy="60" r="52" class="ring-fill" id="battRing"/>
+              </svg>
+              <div class="battery-pct"><span id="battPct">--</span>%</div>
+            </div>
+            <div class="status-row"><span class="status-label">剩餘時間</span><span class="status-val" id="battTime">--</span></div>
+            <div class="status-row"><span class="status-label">電壓</span><span class="status-val" id="voltage">-- V</span></div>
+            <div class="status-row"><span class="status-label">電流</span><span class="status-val" id="current">-- A</span></div>
+            <div class="status-row"><span class="status-dot-label"><span class="dot ok"></span>系統正常</span></div>
+          </section>
+
+        </main>
+      </section>
+
+    </div>
+  </div>
+
+  <button class="page-nav next" id="nextPage" aria-label="下一頁">›</button>
+
+</div>
+
+<script src="field-library.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
