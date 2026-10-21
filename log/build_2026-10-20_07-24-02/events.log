@@ -1,0 +1,91 @@
+[0.000000] (-) TimerEvent: {}
+[0.000331] (-) JobUnselected: {'identifier': 'control'}
+[0.000641] (-) JobUnselected: {'identifier': 'motor'}
+[0.000678] (-) JobUnselected: {'identifier': 'web_control'}
+[0.000859] (field_robot) JobQueued: {'identifier': 'field_robot', 'dependencies': OrderedDict()}
+[0.000898] (field_robot) JobStarted: {'identifier': 'field_robot'}
+[0.099940] (-) TimerEvent: {}
+[0.200455] (-) TimerEvent: {}
+[0.300999] (-) TimerEvent: {}
+[0.401345] (-) TimerEvent: {}
+[0.501765] (-) TimerEvent: {}
+[0.602188] (-) TimerEvent: {}
+[0.702504] (-) TimerEvent: {}
+[0.762806] (field_robot) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/field_robot', 'build', '--build-base', '/root/ros2_ws/build/field_robot/build', 'install', '--record', '/root/ros2_ws/build/field_robot/install.log', '--install-scripts', '$base/lib/field_robot', '--single-version-externally-managed', 'install_data'], 'cwd': '/root/ros2_ws/src/field_robot', 'env': {'HOSTNAME': '6c88fb6286bb', 'GIT_ASKPASS': '/root/.vscode-server/bin/6d62b1d5dace93a33b3a6d3eca1317bd5e15bcb1/extensions/git/dist/askpass.sh', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'BROWSER': '/root/.vscode-server/bin/6d62b1d5dace93a33b3a6d3eca1317bd5e15bcb1/bin/helpers/browser.sh', 'HOME': '/root', 'TERM_PROGRAM_VERSION': '1.142.0', 'VSCODE_IPC_HOOK_CLI': '/tmp/vscode-ipc-e937b679-b7c4-4496-a2bb-9448ab9ba845.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/root/.vscode-server/bin/6d62b1d5dace93a33b3a6d3eca1317bd5e15bcb1/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/root/.vscode-server/bin/6d62b1d5dace93a33b3a6d3eca1317bd5e15bcb1/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'COLORTERM': 'truecolor', 'REMOTE_CONTAINERS': 'true', 'COLCON_PREFIX_PATH': '/root/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'REMOTE_CONTAINERS_IPC': '/tmp/vscode-remote-containers-ipc-065539a5-25eb-4dde-b84b-a634bd2fbf60.sock', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/bin/6d62b1d5dace93a33b3a6d3eca1317bd5e15bcb1/bin/remote-cli:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'REMOTE_CONTAINERS_SOCKETS': '[]', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/tmp/vscode-git-96859253f2.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/root/ros2_ws/install/web_control:/root/ros2_ws/install/motor:/root/ros2_ws/install/field_robot:/root/ros2_ws/install/control:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/root/ros2_ws/build/field_robot', 'LC_ALL': 'C.UTF-8', 'COPILOT_DEBUG_NONCE': '955d2514f7b47cd599c267a11b7cb03a', 'PYTHONPATH': '/root/ros2_ws/build/field_robot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/field_robot/lib/python3.12/site-packages:/root/ros2_ws/install/web_control/lib/python3.12/site-packages:/root/ros2_ws/install/motor/lib/python3.12/site-packages:/root/ros2_ws/install/field_robot/lib/python3.12/site-packages:/root/ros2_ws/install/control/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[0.802766] (-) TimerEvent: {}
+[0.903218] (-) TimerEvent: {}
+[0.968266] (field_robot) StdoutLine: {'line': b'running egg_info\n'}
+[0.980281] (field_robot) StdoutLine: {'line': b'writing ../../build/field_robot/field_robot.egg-info/PKG-INFO\n'}
+[0.980628] (field_robot) StdoutLine: {'line': b'writing dependency_links to ../../build/field_robot/field_robot.egg-info/dependency_links.txt\n'}
+[0.980873] (field_robot) StdoutLine: {'line': b'writing entry points to ../../build/field_robot/field_robot.egg-info/entry_points.txt\n'}
+[0.981099] (field_robot) StdoutLine: {'line': b'writing requirements to ../../build/field_robot/field_robot.egg-info/requires.txt\n'}
+[0.981371] (field_robot) StdoutLine: {'line': b'writing top-level names to ../../build/field_robot/field_robot.egg-info/top_level.txt\n'}
+[1.003417] (-) TimerEvent: {}
+[1.012673] (field_robot) StdoutLine: {'line': b"reading manifest file '../../build/field_robot/field_robot.egg-info/SOURCES.txt'\n"}
+[1.014678] (field_robot) StdoutLine: {'line': b"writing manifest file '../../build/field_robot/field_robot.egg-info/SOURCES.txt'\n"}
+[1.015081] (field_robot) StdoutLine: {'line': b'running build\n'}
+[1.015432] (field_robot) StdoutLine: {'line': b'running build_py\n'}
+[1.015650] (field_robot) StdoutLine: {'line': b'copying field_robot/__init__.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot\n'}
+[1.015823] (field_robot) StdoutLine: {'line': b'copying field_robot/motor_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot\n'}
+[1.016074] (field_robot) StdoutLine: {'line': b'copying field_robot/spray_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot\n'}
+[1.016503] (field_robot) StdoutLine: {'line': b'copying field_robot/map_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot\n'}
+[1.016793] (field_robot) StdoutLine: {'line': b'copying field_robot/web_ui_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot\n'}
+[1.016930] (field_robot) StdoutLine: {'line': b'copying field_robot/trigger_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot\n'}
+[1.017160] (field_robot) StdoutLine: {'line': b'copying field_robot/field_library.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot\n'}
+[1.017276] (field_robot) StdoutLine: {'line': b'copying field_robot/fusion_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot\n'}
+[1.017439] (field_robot) StdoutLine: {'line': b'copying field_robot/control_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot\n'}
+[1.017592] (field_robot) StdoutLine: {'line': b'copying field_robot/mpu_node.py -> /root/ros2_ws/build/field_robot/build/lib/field_robot\n'}
+[1.017830] (field_robot) StdoutLine: {'line': b'copying field_robot/web/style.css -> /root/ros2_ws/build/field_robot/build/lib/field_robot/web\n'}
+[1.018155] (field_robot) StdoutLine: {'line': b'copying field_robot/web/field-library.js -> /root/ros2_ws/build/field_robot/build/lib/field_robot/web\n'}
+[1.018236] (field_robot) StdoutLine: {'line': b'copying field_robot/web/app.js -> /root/ros2_ws/build/field_robot/build/lib/field_robot/web\n'}
+[1.018287] (field_robot) StdoutLine: {'line': b'copying field_robot/web/field_library.json -> /root/ros2_ws/build/field_robot/build/lib/field_robot/web\n'}
+[1.018335] (field_robot) StdoutLine: {'line': b'copying field_robot/web/index.html -> /root/ros2_ws/build/field_robot/build/lib/field_robot/web\n'}
+[1.018522] (field_robot) StdoutLine: {'line': b'running install\n'}
+[1.023715] (field_robot) StdoutLine: {'line': b'running install_lib\n'}
+[1.036765] (field_robot) StdoutLine: {'line': b'copying /root/ros2_ws/build/field_robot/build/lib/field_robot/__init__.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot\n'}
+[1.037219] (field_robot) StdoutLine: {'line': b'copying /root/ros2_ws/build/field_robot/build/lib/field_robot/motor_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot\n'}
+[1.037301] (field_robot) StdoutLine: {'line': b'copying /root/ros2_ws/build/field_robot/build/lib/field_robot/spray_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot\n'}
+[1.037548] (field_robot) StdoutLine: {'line': b'copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web/style.css -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web\n'}
+[1.037683] (field_robot) StdoutLine: {'line': b'copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web/field-library.js -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web\n'}
+[1.037839] (field_robot) StdoutLine: {'line': b'copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web/app.js -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web\n'}
+[1.038093] (field_robot) StdoutLine: {'line': b'copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web/field_library.json -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web\n'}
+[1.038383] (field_robot) StdoutLine: {'line': b'copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web/index.html -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web\n'}
+[1.038515] (field_robot) StdoutLine: {'line': b'copying /root/ros2_ws/build/field_robot/build/lib/field_robot/map_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot\n'}
+[1.038814] (field_robot) StdoutLine: {'line': b'copying /root/ros2_ws/build/field_robot/build/lib/field_robot/web_ui_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot\n'}
+[1.038927] (field_robot) StdoutLine: {'line': b'copying /root/ros2_ws/build/field_robot/build/lib/field_robot/trigger_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot\n'}
+[1.039072] (field_robot) StdoutLine: {'line': b'copying /root/ros2_ws/build/field_robot/build/lib/field_robot/field_library.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot\n'}
+[1.039247] (field_robot) StdoutLine: {'line': b'copying /root/ros2_ws/build/field_robot/build/lib/field_robot/fusion_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot\n'}
+[1.039356] (field_robot) StdoutLine: {'line': b'copying /root/ros2_ws/build/field_robot/build/lib/field_robot/control_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot\n'}
+[1.039446] (field_robot) StdoutLine: {'line': b'copying /root/ros2_ws/build/field_robot/build/lib/field_robot/mpu_node.py -> /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot\n'}
+[1.039710] (field_robot) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/__init__.py to __init__.cpython-312.pyc\n'}
+[1.040077] (field_robot) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/motor_node.py to motor_node.cpython-312.pyc\n'}
+[1.042409] (field_robot) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/spray_node.py to spray_node.cpython-312.pyc\n'}
+[1.043090] (field_robot) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/map_node.py to map_node.cpython-312.pyc\n'}
+[1.044393] (field_robot) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/web_ui_node.py to web_ui_node.cpython-312.pyc\n'}
+[1.046293] (field_robot) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/trigger_node.py to trigger_node.cpython-312.pyc\n'}
+[1.046932] (field_robot) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/field_library.py to field_library.cpython-312.pyc\n'}
+[1.048042] (field_robot) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/fusion_node.py to fusion_node.cpython-312.pyc\n'}
+[1.048962] (field_robot) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/control_node.py to control_node.cpython-312.pyc\n'}
+[1.050595] (field_robot) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot/mpu_node.py to mpu_node.cpython-312.pyc\n'}
+[1.052404] (field_robot) StdoutLine: {'line': b'running install_data\n'}
+[1.052535] (field_robot) StdoutLine: {'line': b'copying resource/field_robot -> /root/ros2_ws/install/field_robot/share/ament_index/resource_index/packages\n'}
+[1.052740] (field_robot) StdoutLine: {'line': b'copying package.xml -> /root/ros2_ws/install/field_robot/share/field_robot\n'}
+[1.052932] (field_robot) StdoutLine: {'line': b'copying launch/robot.launch.py -> /root/ros2_ws/install/field_robot/share/field_robot/launch\n'}
+[1.053134] (field_robot) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.066716] (field_robot) StdoutLine: {'line': b"removing '/root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot-0.1.0-py3.12.egg-info' (and everything under it)\n"}
+[1.067103] (field_robot) StdoutLine: {'line': b'Copying ../../build/field_robot/field_robot.egg-info to /root/ros2_ws/install/field_robot/lib/python3.12/site-packages/field_robot-0.1.0-py3.12.egg-info\n'}
+[1.068339] (field_robot) StdoutLine: {'line': b'running install_scripts\n'}
+[1.103555] (-) TimerEvent: {}
+[1.164483] (field_robot) StdoutLine: {'line': b'Installing control_node script to /root/ros2_ws/install/field_robot/lib/field_robot\n'}
+[1.164709] (field_robot) StdoutLine: {'line': b'Installing fusion_node script to /root/ros2_ws/install/field_robot/lib/field_robot\n'}
+[1.164957] (field_robot) StdoutLine: {'line': b'Installing map_node script to /root/ros2_ws/install/field_robot/lib/field_robot\n'}
+[1.165249] (field_robot) StdoutLine: {'line': b'Installing motor_node script to /root/ros2_ws/install/field_robot/lib/field_robot\n'}
+[1.165630] (field_robot) StdoutLine: {'line': b'Installing mpu_node script to /root/ros2_ws/install/field_robot/lib/field_robot\n'}
+[1.165725] (field_robot) StdoutLine: {'line': b'Installing spray_node script to /root/ros2_ws/install/field_robot/lib/field_robot\n'}
+[1.165777] (field_robot) StdoutLine: {'line': b'Installing trigger_node script to /root/ros2_ws/install/field_robot/lib/field_robot\n'}
+[1.166043] (field_robot) StdoutLine: {'line': b'Installing web_ui_node script to /root/ros2_ws/install/field_robot/lib/field_robot\n'}
+[1.166099] (field_robot) StdoutLine: {'line': b"writing list of installed files to '/root/ros2_ws/build/field_robot/install.log'\n"}
+[1.191283] (field_robot) CommandEnded: {'returncode': 0}
+[1.203688] (-) TimerEvent: {}
+[1.208748] (field_robot) JobEnded: {'identifier': 'field_robot', 'rc': 0}
+[1.209906] (-) EventReactorShutdown: {}

@@ -15,6 +15,6 @@ setup(
         ('share/' + package_name + '/launch', ['launch/robot.launch.py']),
     ],
     install_requires=['setuptools'],
-    zip_safe=True,
+    zip_safe=False,
     entry_points={'console_scripts': [f'{n} = {package_name}.{n}:main' for n in nodes]},
 )

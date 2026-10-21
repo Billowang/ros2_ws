@@ -49,6 +49,8 @@ class MotorNode(Node):
         gp = lambda k: self.get_parameter(k).value
         self.L, self.R = gp('left_station'), gp('right_station')
         self.sign = {self.L: gp('left_sign'), self.R: gp('right_sign')}
+        if self.L == self.R:
+            self.get_logger().error('left_station == right_station，請檢查參數')
 
         self.ser = None
         if not gp('simulate'):
@@ -84,8 +86,8 @@ class MotorNode(Node):
         if self.sim:
             self.sim_rpm = {self.L: left, self.R: right}
             return
-        base = bytearray([0x00, 0x65, 0x02, 0x02, 0x0A, 0x00, 0x00, *i16(right),
-                          0x01, 0x0A, 0x00, 0x00, *i16(left)])
+        base = bytearray([0x00, 0x65, 0x02, self.R & 0xFF, 0x0A, 0x00, 0x00, *i16(right),
+                          self.L & 0xFF, 0x0A, 0x00, 0x00, *i16(left)])
         try:
             self.ser.write(base + crc16(base))
         except Exception as e:

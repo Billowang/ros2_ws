@@ -5,11 +5,14 @@
      送出  stop    停止任務                 （按鈕 1 次）
      送出  manual  左右輪轉速 rpm           （值改變時；非零時每 0.5 s 心跳）
      送出  estop   急停                     （按鈕 1 次）
-     收到  hello         連線時 1 次（目前任務是否進行中）
+     收到  hello         連線時 1 次（任務是否進行中 + 輪速上限 max_rpm）
      收到  mission_done  任務完成時 1 次
+     收到  mission_failed 航點逾時、任務被中止時 1 次
+     若後端設了 auth_token，網址要帶 ?token=xxx
    ===================================================================== */
 const WS_URL = (location.protocol === "https:" ? "wss://" : "ws://") + location.hostname + ":8765";
-const MAX_RPM = 300;          // throttle 100% 對應的輪速 (rpm)，請依實機調整
+const TOKEN = new URLSearchParams(location.search).get("token") || "";
+let maxRpm = 100;             // throttle 100% 對應的輪速 (rpm)；連線後由後端 hello 的 max_rpm 覆寫（唯一來源）
 const STEER_GAIN = 0.5;       // steer 100% 造成的左右輪差速比例
 const TICK_MS = 50;           // 檢查「手動輪速是否改變」的間隔
 const HEARTBEAT_MS = 500;     // 非零輪速時的心跳（伺服器 1 s 沒收到會自動歸零）
@@ -38,6 +41,7 @@ function send(obj){
 function connect(){
   ws = new WebSocket(WS_URL);
   ws.onopen = () => {
+    if(TOKEN) ws.send(JSON.stringify({ type: "auth", token: TOKEN }));   // 必須是第一個訊息
     wsReady = true;
     $("conn-dot").classList.add("live");
     $("conn-label").textContent = "已連線";
@@ -45,10 +49,10 @@ function connect(){
     send({ type: "mode", value: state.mode });       // 重新同步模式
     lastSent = { l: NaN, r: NaN };                   // 讓手動輪速重送一次
   };
-  ws.onclose = () => {
+  ws.onclose = (evt) => {
     wsReady = false;
     $("conn-dot").classList.remove("live");
-    $("conn-label").textContent = "已斷線 - 重連中…";
+    $("conn-label").textContent = evt && evt.code === 1008 ? "未授權（網址缺 token）" : "已斷線 - 重連中…";
     $("connStatus").textContent = "中斷";
     setTimeout(connect, 1500);
   };
@@ -56,10 +60,14 @@ function connect(){
   ws.onmessage = (evt) => {
     let m; try{ m = JSON.parse(evt.data); }catch{ return; }
     if(m.type === "hello"){
+      if(typeof m.max_rpm === "number" && m.max_rpm > 0){ maxRpm = m.max_rpm; renderCmd(); }
       if(m.running) setMission("running");
       else if(state.mission === "running") setMission("idle");
     } else if(m.type === "mission_done"){
       setMission("done");
+    } else if(m.type === "mission_failed"){
+      setMission("idle");
+      $("missionFooter").textContent = "航點逾時，任務已中止（請檢查定位與馬達）。";
     }
   };
 }
@@ -100,7 +108,9 @@ function setMode(mode){
   if(state.mode === mode) return;
   state.mode = mode;
   if(mode === "manual"){
-    if(state.mission === "running"){ send({ type: "stop" }); setMission("idle"); }
+    // 切到手動：停止並清除所有自動資料（任務、進度、完成狀態）；後端也會同步清掉目標/噴粉/觸發
+    if(state.mission === "running") send({ type: "stop" });
+    if(state.mission !== "idle") setMission("idle");
     send({ type: "mode", value: "manual" });
     lastSent = { l: 0, r: 0 }; lastSentAt = Date.now();   // 控制節點切模式時已把輪速歸零
   } else {
@@ -118,14 +128,14 @@ function wheelCmd(){
   if(lockedOut()) return { l: 0, r: 0 };
   const l = clamp(state.throttle + state.steer * STEER_GAIN, -100, 100);
   const r = clamp(state.throttle - state.steer * STEER_GAIN, -100, 100);
-  return { l: Math.round(l * MAX_RPM / 100), r: Math.round(r * MAX_RPM / 100) };
+  return { l: Math.round(l * maxRpm / 100), r: Math.round(r * maxRpm / 100) };
 }
 
 function renderCmd(){
   const { l, r } = wheelCmd();
   $("leftRpm").textContent = l;  $("rightRpm").textContent = r;
-  $("leftBar").style.width  = clamp(Math.abs(l) / MAX_RPM * 100, 0, 100) + "%";
-  $("rightBar").style.width = clamp(Math.abs(r) / MAX_RPM * 100, 0, 100) + "%";
+  $("leftBar").style.width  = clamp(Math.abs(l) / maxRpm * 100, 0, 100) + "%";
+  $("rightBar").style.width = clamp(Math.abs(r) / maxRpm * 100, 0, 100) + "%";
   $("wheelRpm").textContent = `L ${l}   R ${r}`;
 }
 
@@ -336,3 +346,10 @@ baseSpacing.addEventListener("input", renderDiamond);
 
 goToPage(0);
 renderThrottle(); renderSteer(); renderCmd(); setLockUI(); setCruiseUI();
+
+/* 手機轉向、網址列收放、視窗縮放時，滑桿軌道尺寸會變 -> 重新定位把手 */
+if(window.ResizeObserver){
+  const ro = new ResizeObserver(() => { renderThrottle(); renderSteer(); });
+  ro.observe(throttleTrack); ro.observe(steerTrack);
+}
+window.addEventListener("resize", () => { renderThrottle(); renderSteer(); });

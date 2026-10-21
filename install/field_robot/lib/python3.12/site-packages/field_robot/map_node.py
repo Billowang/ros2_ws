@@ -1,7 +1,11 @@
 """2. Map Node: 依「地圖型號」(field_library) 展開航點，逐點送出 Pose2D。
 
-/map_select 內容為 JSON 字串（也接受純文字規格名稱）：
-  {"preset":"成棒（國際規格）","spacing":27.43,"path":"perimeter_full"}
+/mission_cmd (String) 兩種格式：
+  JSON（建議，地圖資料跟著指令一起到，不會有跨 topic 的先後問題）：
+    {"cmd":"start","map":{"preset":"成棒（國際規格）","spacing":27.43,"path":"perimeter_full"}}
+  純文字 "start" / "stop"：start 時使用最近一次 /map_select 的內容（相容舊流程）
+/mode_cmd 變成 manual 時：任務、路徑、進度全部清掉，不再送任何目標。
+/mission_failed：控制節點回報航點逾時 -> 任務中止。
 """
 import json
 import math
@@ -22,10 +26,17 @@ class MapNode(Node):
         self.create_subscription(String, '/map_select', self.on_map, 10)
         self.create_subscription(String, '/mission_cmd', self.on_cmd, 10)
         self.create_subscription(Bool, '/reached', self.on_reached, 10)
+        self.create_subscription(Bool, '/mission_failed', self.on_failed, 10)
+        self.create_subscription(String, '/mode_cmd', self.on_mode, 10)
         self.map_req = {}
         self.path = []
         self.idx = 0
         self.running = False
+
+    def reset_mission(self):
+        self.running = False
+        self.path = []
+        self.idx = 0
 
     def on_map(self, msg):
         try:
@@ -33,16 +44,37 @@ class MapNode(Node):
         except json.JSONDecodeError:
             self.map_req = {'preset': msg.data}
 
+    def on_mode(self, msg):
+        if msg.data == 'manual' and (self.running or self.path):
+            self.reset_mission()
+            self.get_logger().info('mode -> manual: mission cleared')
+
+    def on_failed(self, msg):
+        if msg.data and self.running:
+            self.reset_mission()
+            self.get_logger().error('mission aborted by control_node')
+
     def on_cmd(self, msg):
-        if msg.data == 'start':
+        cmd, req = msg.data, None
+        if msg.data.lstrip().startswith('{'):
             try:
-                self.path = self.build_path(self.map_req)
-            except Exception as e:
-                self.get_logger().error(f'bad map model {self.map_req}: {e}')
+                d = json.loads(msg.data)
+            except json.JSONDecodeError:
+                self.get_logger().error(f'bad mission_cmd JSON: {msg.data!r}')
                 return
+            cmd, req = d.get('cmd'), d.get('map')
+
+        if cmd == 'start':
+            req = req if req is not None else self.map_req
+            try:
+                self.path = self.build_path(req)
+            except Exception as e:
+                self.get_logger().error(f'bad map model {req}: {e}')
+                return
+            self.map_req = req
             self.idx, self.running = 0, True
             self._send_goal()
-        elif msg.data == 'stop':
+        elif cmd == 'stop':
             self.running = False
 
     def build_path(self, req):
@@ -57,7 +89,10 @@ class MapNode(Node):
         pts = [(coords[n].x, coords[n].y) for n in names]
         out = []
         for i, (x, y) in enumerate(pts):
-            th = math.atan2(pts[i + 1][1] - y, pts[i + 1][0] - x) if i + 1 < len(pts) else out[-1][2]
+            if i + 1 < len(pts):
+                th = math.atan2(pts[i + 1][1] - y, pts[i + 1][0] - x)
+            else:
+                th = out[-1][2] if out else 0.0
             out.append((x, y, th))
         return out
 

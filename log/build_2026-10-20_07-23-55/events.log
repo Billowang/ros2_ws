@@ -1,0 +1,23 @@
+[0.000000] (-) TimerEvent: {}
+[0.000428] (control) JobQueued: {'identifier': 'control', 'dependencies': OrderedDict()}
+[0.000556] (field_robot) JobQueued: {'identifier': 'field_robot', 'dependencies': OrderedDict()}
+[0.000605] (motor) JobQueued: {'identifier': 'motor', 'dependencies': OrderedDict()}
+[0.000636] (web_control) JobQueued: {'identifier': 'web_control', 'dependencies': OrderedDict()}
+[0.002424] (control) JobStarted: {'identifier': 'control'}
+[0.076643] (field_robot) JobStarted: {'identifier': 'field_robot'}
+[0.100339] (motor) JobStarted: {'identifier': 'motor'}
+[0.102624] (-) TimerEvent: {}
+[0.112955] (web_control) JobStarted: {'identifier': 'web_control'}
+[0.202851] (-) TimerEvent: {}
+[0.303569] (-) TimerEvent: {}
+[0.386254] (control) StderrLine: {'line': b'Traceback (most recent call last):\n  File "/usr/lib/python3/dist-packages/colcon_core/executor/__init__.py", line 91, in __call__\n    rc = await self.task(*args, **kwargs)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/colcon_core/task/__init__.py", line 120, in __call__\n    return await task_method(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/colcon_ros/task/ament_python/build.py", line 51, in build\n    setup_py_data = get_setup_data(self.context.pkg, env)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/colcon_core/task/python/__init__.py", line 20, in get_setup_data\n    return dict(pkg.metadata[key](env))\n                ^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/colcon_ros/package_augmentation/ros_ament_python.py", line 57, in getter\n    return get_setup_information(\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/colcon_python_setup_py/package_identification/python_setup_py.py", line 249, in get_setup_information\n    _setup_information_cache[hashable_env] = _get_setup_information(\n                                             ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/colcon_python_setup_py/package_identification/python_setup_py.py", line 296, in _get_setup_information\n    result = subprocess.run(\n             ^^^^^^^^^^^^^^^\n  File "/usr/lib/python3.12/subprocess.py", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command \'[\'/usr/bin/python3\', \'-c\', \'import sys;from contextlib import suppress;exec("with suppress(ImportError):    from setuptools.extern.packaging.specifiers    import SpecifierSet");exec("with suppress(ImportError):    from packaging.specifiers import SpecifierSet");from distutils.core import run_setup;dist = run_setup(    \\\'setup.py\\\', script_args=(\\\'--dry-run\\\',), stop_after=\\\'config\\\');skip_keys = (\\\'cmdclass\\\', \\\'distclass\\\', \\\'ext_modules\\\', \\\'metadata\\\');data = {    key: value for key, value in dist.__dict__.items()     if (        not key.startswith(\\\'_\\\') and         not callable(value) and         key not in skip_keys and         key not in dist.display_option_names    )};data[\\\'metadata\\\'] = {    k: v for k, v in dist.metadata.__dict__.items()     if k not in (\\\'license_files\\\', \\\'provides_extras\\\')};sys.stdout.buffer.write(repr(data).encode(\\\'utf-8\\\'))\']\' returned non-zero exit status 1.\n'}
+[0.387738] (control) JobEnded: {'identifier': 'control', 'rc': 1}
+[0.403785] (-) TimerEvent: {}
+[0.504244] (-) TimerEvent: {}
+[0.604742] (-) TimerEvent: {}
+[0.705227] (-) TimerEvent: {}
+[0.805764] (-) TimerEvent: {}
+[0.814362] (field_robot) JobEnded: {'identifier': 'field_robot', 'rc': 'SIGINT'}
+[0.815819] (web_control) JobEnded: {'identifier': 'web_control', 'rc': 'SIGINT'}
+[0.816194] (motor) JobEnded: {'identifier': 'motor', 'rc': 'SIGINT'}
+[0.826236] (-) EventReactorShutdown: {}

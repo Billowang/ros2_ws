@@ -2,7 +2,8 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#eef1f5">
 <title>機器人控制面板</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -92,18 +93,18 @@
           </section>
 
           <section class="motorgrid">
-            <div class="card motorcard">
+            <div class="card motorcard leftcard">
               <div class="motor-label">LEFT CMD</div>
               <div class="motor-value"><span id="leftRpm">0</span><span class="unit">rpm</span></div>
               <div class="motor-bar"><div class="motor-bar-fill" id="leftBar"></div></div>
             </div>
-            <div class="card motorcard">
+            <div class="card motorcard rightcard">
               <div class="motor-label right">RIGHT CMD</div>
               <div class="motor-value"><span id="rightRpm">0</span><span class="unit">rpm</span></div>
               <div class="motor-bar"><div class="motor-bar-fill" id="rightBar"></div></div>
             </div>
 
-            <div class="card controlcard">
+            <div class="card controlcard throttlecard">
               <div class="control-title">前後控制</div>
               <div class="vslider">
                 <button class="arrow up" id="throttleUp" aria-label="加速">▲</button>
@@ -116,7 +117,7 @@
               <div class="control-readout">Throttle <span id="throttleVal">0</span>%</div>
             </div>
 
-            <div class="card controlcard">
+            <div class="card controlcard steercard">
               <div class="control-title">左右控制</div>
               <div class="hslider">
                 <button class="arrow left" id="steerLeft" aria-label="左轉">◀</button>
