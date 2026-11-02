@@ -1,10 +1,14 @@
 """6. MPU Node -> /mpu_yaw (rad, 逆時針為正)。三種資料來源（參數 source）：
   serial (預設) : 讀 ESP32 經 USB/UART 傳來的 yaw 封包（ESP32 已做校正 + 噪音忽略 + 積分）
+                  同時發佈 /mpu_rate (rad/s)
   i2c           : 樹莓派直接接 MPU-6500/6050，本節點自己校正、積分（同樣有噪音忽略）
   開不了來源（或 simulate:=true）時自動進入模擬模式：用 /motor_rpm_cmd 的左右輪差速積分 yaw。
 
-ESP32 封包 (11 bytes，小端序)：
-  AA 55 | seq u8 | yaw_mdeg i32 (0.001°) | rate_cdps i16 (0.01°/s) | CRC16 Modbus(小端，範圍 seq..rate)
+ESP32 封包 (11 bytes，小端序，Float32 格式，無 CRC)：
+  AA 55 | seq u8 | yaw_deg float32 (度) | rate_dps float32 (度/秒)
+  struct 格式 '<Bff'（seq, yaw_deg, rate_dps）
+無 CRC，所以用三道防線避免誤判：標頭 AA 55、數值合理性（有限值 / 範圍）、
+seq 連續（不連續時要求下一個標頭緊跟在後才接受）。
 """
 import math
 import statistics
@@ -27,16 +31,10 @@ except ImportError:
 
 PWR_MGMT_1, CONFIG, GYRO_CONFIG, GYRO_ZOUT_H, WHO_AM_I = 0x6B, 0x1A, 0x1B, 0x47, 0x75
 LSB_PER_DPS = 131.0          # ±250 dps
-FRAME_LEN = 11
-
-
-def crc16(data) -> int:
-    crc = 0xFFFF
-    for b in data:
-        crc ^= b
-        for _ in range(8):
-            crc = (crc >> 1) ^ 0xA001 if crc & 1 else crc >> 1
-    return crc
+FRAME_LEN = 11               # AA 55 | seq(1) | yaw f32(4) | rate f32(4)
+HEADER = b'\xaa\x55'
+YAW_LIMIT_DEG = 360.0         # ESP32 韌體把 yaw 限制在 ±180°，超過視為亂碼
+RATE_LIMIT_DPS = 300.0        # MPU6500 ±250 dps 滿量程
 
 
 class MPUNode(Node):
@@ -74,9 +72,12 @@ class MPUNode(Node):
         self.sim_w = 0.0
         self.yaw = 0.0
         self.rx_buf = bytearray()
+        self.last_seq = None
+        self.frames_lost = 0
         self.last_rx = time.monotonic()
         self.t = time.monotonic()
         self.pub = self.create_publisher(Float32, '/mpu_yaw', 10)
+        self.pub_rate = self.create_publisher(Float32, '/mpu_rate', 10)   # rad/s（serial 模式才有資料）
 
         if self.sim:
             self.get_logger().info('mpu_node: simulation mode (yaw from wheel command)')
@@ -98,16 +99,27 @@ class MPUNode(Node):
             return
         buf = self.rx_buf
         while len(buf) >= FRAME_LEN:
-            if buf[0] == 0xAA and buf[1] == 0x55:
-                f = bytes(buf[:FRAME_LEN])
-                if crc16(f[2:9]) == int.from_bytes(f[9:11], 'little'):
-                    mdeg = struct.unpack('<i', f[3:7])[0]
-                    self.yaw = math.radians(mdeg / 1000.0)
-                    self.last_rx = time.monotonic()
-                    self.pub.publish(Float32(data=self.yaw))
-                    del buf[:FRAME_LEN]
-                    continue
-            del buf[0]                    # 重新同步（開機亂碼、掉位元組都會走到這裡）
+            if buf[0] != 0xAA or buf[1] != 0x55:
+                del buf[0]                # 重新同步（開機亂碼、掉位元組都會走到這裡）
+                continue
+            seq, yaw_deg, rate_dps = struct.unpack_from('<Bff', buf, 2)
+            plausible = (math.isfinite(yaw_deg) and math.isfinite(rate_dps)
+                         and abs(yaw_deg) <= YAW_LIMIT_DEG and abs(rate_dps) <= RATE_LIMIT_DPS)
+            in_seq = self.last_seq is not None and seq == (self.last_seq + 1) & 0xFF
+            if plausible and not in_seq and len(buf) < FRAME_LEN + 2:
+                break                     # 沒有 CRC：等下一個標頭出現再確認這包是真的
+            if plausible and (in_seq or bytes(buf[FRAME_LEN:FRAME_LEN + 2]) == HEADER):
+                if self.last_seq is not None and not in_seq:
+                    self.frames_lost += (seq - self.last_seq - 1) & 0xFF
+                self.last_seq = seq
+                self.yaw = math.atan2(math.sin(math.radians(yaw_deg)), math.cos(math.radians(yaw_deg)))
+                self.last_rx = time.monotonic()
+                self.pub.publish(Float32(data=self.yaw))
+                self.pub_rate.publish(Float32(data=math.radians(rate_dps)))
+                del buf[:FRAME_LEN]
+            else:
+                self.last_seq = None      # 假標頭：丟掉 1 byte 後重新找
+                del buf[0]
 
     def check_stale(self):
         if time.monotonic() - self.last_rx > self.gp('stale_sec'):
@@ -190,5 +202,13 @@ class MPUNode(Node):
 
 def main():
     rclpy.init()
-    rclpy.spin(MPUNode())
-    rclpy.shutdown()
+    node = MPUNode()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        if node.ser is not None and node.ser.is_open:
+            node.ser.close()
+        node.destroy_node()
+        rclpy.shutdown()
