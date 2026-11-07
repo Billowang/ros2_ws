@@ -40,6 +40,8 @@ class ControlNode(Node):
                          v_max=0.6, v_min=0.15, w_max=1.2,
                          goal_tol=0.15, kp_dist=0.8,
                          turn_in=0.5, turn_out=0.35,        # 原地轉向遲滯 (rad)
+                         rpm_deadzone=15.0,                 # 馬達死區補償：原地轉向時每輪最低 rpm（0 = 關閉）
+                         heading_tol=0.05,                  # 前進時的角度死區 (rad)，誤差更小就不修正
                          goal_timeout=120.0,                # 單一航點逾時 (s)，逾時中止任務
                          manual_timeout=1.0,                # 手動指令逾時 (s)
                          spray_while_turning=False).items():
@@ -148,9 +150,30 @@ class ControlNode(Node):
         else:
             v = max(self.p('v_min'), min(self.p('v_max'), self.p('kp_dist') * dist)) * math.cos(err)
         w = self.pid_w.step(err, self.dt)
+        if not self.turning and abs(err) < self.p('heading_tol'):
+            w = 0.0                                        # 角度死區：誤差很小就直線走，避免來回抖動
 
         # 只在前進時噴粉（原地轉彎不噴），要改回舊行為把 spray_while_turning 設 true
         self.pub_spray.publish(Bool(data=v > 0.0 or bool(self.p('spray_while_turning'))))
+
+        L, r = self.p('track_width'), self.p('wheel_radius')
+        to_rpm = 60.0 / (2.0 * math.pi * r)
+        left = (v - w * L / 2.0) * to_rpm
+        right = (v + w * L / 2.0) * to_rpm
+        if self.turning:
+            # 死區補償：誤差變小時 PID 輸出會低於馬達的啟動轉速，車子轉不動、卡在 turn_out 之外。
+            # 原地轉向時每輪至少給 rpm_deadzone，轉進 turn_out 容許範圍後就會開始前進。
+            dz = self.p('rpm_deadzone')
+            sgn = 1.0 if err >= 0.0 else -1.0
+            left = -sgn * max(abs(left), dz)
+            right = sgn * max(abs(right), dz)
+        self.send_rpm(left, right)
+
+
+def main():
+    rclpy.init()
+    rclpy.spin(ControlNode())
+    rclpy.shutdown()
 
         L, r = self.p('track_width'), self.p('wheel_radius')
         to_rpm = 60.0 / (2.0 * math.pi * r)
