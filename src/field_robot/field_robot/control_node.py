@@ -175,14 +175,3 @@ def main():
     rclpy.spin(ControlNode())
     rclpy.shutdown()
 
-        L, r = self.p('track_width'), self.p('wheel_radius')
-        to_rpm = 60.0 / (2.0 * math.pi * r)
-        left = (v - w * L / 2.0) * to_rpm
-        right = (v + w * L / 2.0) * to_rpm
-        self.send_rpm(left, right)
-
-
-def main():
-    rclpy.init()
-    rclpy.spin(ControlNode())
-    rclpy.shutdown()
