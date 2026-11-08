@@ -13,7 +13,7 @@ import math
 import rclpy
 from geometry_msgs.msg import Pose2D
 from rclpy.node import Node
-from std_msgs.msg import Bool, String
+from std_msgs.msg import Bool, Empty, String
 
 from .field_library import get_base_coords, list_path_templates, list_presets
 
@@ -28,6 +28,10 @@ class MapNode(Node):
         self.create_subscription(Bool, '/reached', self.on_reached, 10)
         self.create_subscription(Bool, '/mission_failed', self.on_failed, 10)
         self.create_subscription(String, '/mode_cmd', self.on_mode, 10)
+        self.create_subscription(Empty, '/heading_zeroed', self.on_zeroed, 10)
+        self.waiting_zero = False
+        self.zero_timer = self.create_timer(0.5, self.on_zero_timeout)   # 等不到 fusion 時的保險
+        self.zero_timer.cancel()
         self.map_req = {}
         self.path = []
         self.idx = 0
@@ -35,6 +39,8 @@ class MapNode(Node):
 
     def reset_mission(self):
         self.running = False
+        self.waiting_zero = False
+        self.zero_timer.cancel()
         self.path = []
         self.idx = 0
 
@@ -73,9 +79,13 @@ class MapNode(Node):
                 return
             self.map_req = req
             self.idx, self.running = 0, True
-            self._send_goal()
+            # 先等 fusion 把朝向歸零（/heading_zeroed）才送第一個目標，車子不會用舊座標先動
+            self.waiting_zero = True
+            self.zero_timer.reset()
         elif cmd == 'stop':
             self.running = False
+            self.waiting_zero = False
+            self.zero_timer.cancel()
 
     def build_path(self, req):
         spacing = req.get('spacing')
@@ -96,8 +106,23 @@ class MapNode(Node):
             out.append((x, y, th))
         return out
 
+    def on_zeroed(self, _):
+        if self.waiting_zero and self.running:
+            self._release_start()
+
+    def on_zero_timeout(self):
+        self.zero_timer.cancel()
+        if self.waiting_zero and self.running:
+            self.get_logger().warn('沒等到 /heading_zeroed，直接開始')
+            self._release_start()
+
+    def _release_start(self):
+        self.waiting_zero = False
+        self.zero_timer.cancel()
+        self._send_goal()
+
     def on_reached(self, msg):
-        if not (msg.data and self.running):
+        if not (msg.data and self.running) or self.waiting_zero:
             return
         self.idx += 1
         if self.idx >= len(self.path):
